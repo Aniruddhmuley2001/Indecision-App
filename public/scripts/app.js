@@ -42,39 +42,47 @@ var template = React.createElement(
     )
 );
 
-var user = {
-    name: 'Aniruddh',
-    age: 18,
-    location: 'India'
+var count = 0;
+var addOne = function addOne() {
+    count++;
+    console.log('addOne', count, count);
 };
-function getLocation(location) {
-    if (location) {
-        return React.createElement(
-            'p',
-            null,
-            'Location: ',
-            location
-        );
-    }
-}
+var minusOne = function minusOne() {
+    count--;
+};
+var reset = function reset() {
+    count = 0;
+};
 var templateTwo = React.createElement(
     'div',
     null,
     React.createElement(
         'h1',
         null,
-        user.name ? user.name : 'Anonymous'
+        'Count: ',
+        count
     ),
-    user.age && user.age >= 18 && React.createElement(
-        'p',
-        null,
-        'Age: ',
-        user.age
+    React.createElement(
+        'button',
+        { onClick: addOne },
+        '+1'
     ),
-    getLocation(user.location)
+    ' \u2003',
+    React.createElement(
+        'button',
+        { onClick: minusOne },
+        '-1'
+    ),
+    ' \u2003',
+    React.createElement(
+        'button',
+        { onClick: reset },
+        'Reset'
+    ),
+    ' \u2003'
 );
 
 var appRoot = document.getElementById('app');
 
-ReactDOM.render(template, appRoot);
+ReactDOM.render(templateTwo, appRoot);
 // ReactDOM.render(templateTwo, appRoot);
