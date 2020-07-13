@@ -5,9 +5,14 @@ console.log("app.js is running...");
 //JSX: JavaScript XML
 var app = {
     title: 'Indecision Application',
-    subtitle: 'Helping you take the right decision',
+    subtitle: 'Helping you making choices...',
     options: ['One', 'Two']
 };
+
+var onFormSubmit = function onFormSubmit(e) {
+    e.preventDefault();
+};
+
 var template = React.createElement(
     'div',
     null,
@@ -39,50 +44,19 @@ var template = React.createElement(
             null,
             'Item two'
         )
+    ),
+    React.createElement(
+        'form',
+        { onSubmit: onFormSubmit },
+        React.createElement('input', { type: 'text', name: 'option' }),
+        React.createElement(
+            'button',
+            null,
+            'Add option'
+        )
     )
-);
-
-var count = 0;
-var addOne = function addOne() {
-    count++;
-    console.log('addOne', count, count);
-};
-var minusOne = function minusOne() {
-    count--;
-};
-var reset = function reset() {
-    count = 0;
-};
-var templateTwo = React.createElement(
-    'div',
-    null,
-    React.createElement(
-        'h1',
-        null,
-        'Count: ',
-        count
-    ),
-    React.createElement(
-        'button',
-        { onClick: addOne },
-        '+1'
-    ),
-    ' \u2003',
-    React.createElement(
-        'button',
-        { onClick: minusOne },
-        '-1'
-    ),
-    ' \u2003',
-    React.createElement(
-        'button',
-        { onClick: reset },
-        'Reset'
-    ),
-    ' \u2003'
 );
 
 var appRoot = document.getElementById('app');
 
-ReactDOM.render(templateTwo, appRoot);
-// ReactDOM.render(templateTwo, appRoot);
+ReactDOM.render(template, appRoot);
