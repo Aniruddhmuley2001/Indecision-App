@@ -1,64 +1,84 @@
-console.log("app.js is running...");
+class IndecisionApp extends React.Component {
+    render(){
+        const title = 'Indecision App';
+        const subtitle = 'Assisting you to take your decisions';
+        const optionsArray = ['Task 1', 'Task 2', 'Task 4'];
 
-//JSX: JavaScript XML
-const app = {
-    title: 'Indecision Application',
-    subtitle: 'Helping you making choices...',
-    options: []
-}
-
-const onFormSubmit = (e) => {
-    e.preventDefault();
-
-    const option = e.target.elements.option.value;
-
-    if(option){
-        app.options.push(option);
-        e.target.elements.option.value = '';
+        return(
+            <div>
+                <Header title={title} subtitle={subtitle}/>
+                <Action />
+                <Options options={optionsArray}/>
+                <AddOption />  
+            </div>
+        );
     }
-
-    renderOptionsArray();
 }
 
-const onRemoveAll = (e) => {
-    app.options = [];
-    renderOptionsArray();
+class Header extends React.Component {
+    render(){
+        return(
+            <div>
+                <h1>{this.props.title}</h1>
+                <h2>{this.props.subtitle}</h2>
+            </div>
+        );
+    }
 }
 
-const onMakeDecision = () => {
-    const randomNum = Math.floor(Math.random() * app.options.length);
-    const optionTaken = app.options[randomNum];
-    alert(optionTaken);
+class Action extends React.Component {
+    handleClick(){
+        alert('You must go for Option ');
+    }
+    render(){
+        return(
+            <div>
+                <button onClick={this.handleClick}>What should I do?</button>
+            </div>
+        );
+    }
 }
 
-const appRoot = document.getElementById('app');
-
-const renderOptionsArray = () => {
-    const template = (
-        <div>
-            <h1>{app.title}</h1>
-            {app.subtitle && <p>{app.subtitle}</p>}
-            <p>{app.options.length > 0 ? 'Here are your options' : 'No options'}</p>
-            <p>Length of the array: {app.options.length}</p>
-            <button disabled={app.options.length == 0} onClick={onRemoveAll}>Remove all</button>
-            <button disabled={app.options.length == 0} onClick={onMakeDecision}>Help me!</button>
-
-            <ol>
+class Options extends React.Component {
+    handleRemoveAll(){
+        alert('You have clicked the button for removing all options')
+    }
+    render(){
+        return(
+            <div>
+            <button onClick={this.handleRemoveAll}>Remove All</button>
+                <p>The length of the optionsArray = {this.props.options.length}</p>
+                <p>The list of the components of the array are: </p>
                 {
-                    app.options.map((opt) => {
-                        return <li key={opt}>{opt}</li>;
-                    })
+                    this.props.options.map((opt) => <Option key={opt} optionText={opt} />)
                 }
-            </ol>
-
-            <form onSubmit={onFormSubmit}>
-                <input type="text" name="option" />
-                <button>Add option</button>
-            </form>
-        </div>
-    );
-
-    ReactDOM.render(template, appRoot);
+            </div>
+        );
+    }
 }
 
-renderOptionsArray();
+class Option extends React.Component {
+    render(){
+        return(
+            <div>
+                {this.props.optionText}
+            </div>
+        );
+    }
+}
+
+class AddOption extends React.Component {
+    handleAddButton(){
+        alert('You are adding a task to your list.')
+    }
+    render(){
+        return(
+            <div>
+                <input type="text" name="option" />
+                <button onClick={this.handleAddButton}>Add Option</button>
+            </div>
+        );
+    }
+}
+
+ReactDOM.render(<IndecisionApp />, document.getElementById('app'));
