@@ -68,14 +68,23 @@ class Option extends React.Component {
 }
 
 class AddOption extends React.Component {
-    handleAddButton(){
-        alert('You are adding a task to your list.')
+    handleAddButton(e){
+        e.preventDefault();
+
+        const option = e.target.option.value.trim();
+
+        if(option){
+            alert(option);
+            e.target.option.value = '';
+        }
     }
     render(){
         return(
             <div>
-                <input type="text" name="option" />
-                <button onClick={this.handleAddButton}>Add Option</button>
+                <form onSubmit={this.handleAddButton}>
+                    <input type="text" name="option" />
+                    <button>Add Option</button>                
+                </form>
             </div>
         );
     }

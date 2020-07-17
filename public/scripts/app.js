@@ -182,8 +182,15 @@ var AddOption = function (_React$Component6) {
 
     _createClass(AddOption, [{
         key: 'handleAddButton',
-        value: function handleAddButton() {
-            alert('You are adding a task to your list.');
+        value: function handleAddButton(e) {
+            e.preventDefault();
+
+            var option = e.target.option.value.trim();
+
+            if (option) {
+                alert(option);
+                e.target.option.value = '';
+            }
         }
     }, {
         key: 'render',
@@ -191,11 +198,15 @@ var AddOption = function (_React$Component6) {
             return React.createElement(
                 'div',
                 null,
-                React.createElement('input', { type: 'text', name: 'option' }),
                 React.createElement(
-                    'button',
-                    { onClick: this.handleAddButton },
-                    'Add Option'
+                    'form',
+                    { onSubmit: this.handleAddButton },
+                    React.createElement('input', { type: 'text', name: 'option' }),
+                    React.createElement(
+                        'button',
+                        null,
+                        'Add Option'
+                    )
                 )
             );
         }
