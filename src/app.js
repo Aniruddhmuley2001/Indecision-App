@@ -41,7 +41,8 @@ class Action extends React.Component {
 
 class Options extends React.Component {
     handleRemoveAll(){
-        alert('You have clicked the button for removing all options')
+        // alert('You have clicked the button for removing all options');
+        console.log(this);
     }
     render(){
         return(

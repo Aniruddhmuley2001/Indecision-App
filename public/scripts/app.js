@@ -114,7 +114,8 @@ var Options = function (_React$Component4) {
     _createClass(Options, [{
         key: 'handleRemoveAll',
         value: function handleRemoveAll() {
-            alert('You have clicked the button for removing all options');
+            // alert('You have clicked the button for removing all options');
+            console.log(this);
         }
     }, {
         key: 'render',
