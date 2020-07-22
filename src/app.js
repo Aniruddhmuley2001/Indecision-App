@@ -1,13 +1,44 @@
+// Author: Aniruddh Muley
+
 class IndecisionApp extends React.Component {
     constructor(props){
         super(props);
+
         this.state = {
             optionsArray: props.optionsArray
+            // optionsArray: []
         }
+
         this.handleDeleteOptions = this.handleDeleteOptions.bind(this)
         this.handlePick = this.handlePick.bind(this);
         this.handleAddOptions = this.handleAddOptions.bind(this);
-        this.handleDeleteSingleOption = this.handleDeleteSingleOption.bind(this)
+        this.handleDeleteSingleOption = this.handleDeleteSingleOption.bind(this);
+        
+    }
+
+    componentDidMount(){
+        try {
+            const json = localStorage.getItem('options');
+            const options = JSON.parse(json);
+
+            this.setState(() => ({ optionsArray: options }));
+        }
+        catch(e) {
+            // Do nothing
+        }
+        
+    }
+
+    componentDidUpdate(prevState){
+        // Saving Data to local storage
+        if(prevState.optionsArray.length !== this.state.optionsArray.length){
+            const json = JSON.stringify(this.state.optionsArray);
+            localStorage.setItem('options', json);
+        }
+    }
+
+    componentWillUnmount(){
+        // Used when we get directed to some other page 
     }
 
     handleDeleteOptions(){
@@ -135,6 +166,7 @@ const Options = (props) => {
     return(
         <div>
             <button onClick={props.handleDeleteOptions}>Remove All</button>
+            {props.options.length === 0 && <p>Your list seems to be empty. Add your tasks here</p>}
             {
                 props.options.map((opt) => (
                     <Option 
@@ -191,6 +223,10 @@ class AddOption extends React.Component {
         // }
 
         this.setState(() => ({ error }));
+
+        if(!error){
+            e.target.elements.option.value = '';
+        }
     }
     render(){
         return(
