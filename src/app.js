@@ -5,8 +5,8 @@ class IndecisionApp extends React.Component {
         super(props);
 
         this.state = {
-            optionsArray: props.optionsArray
-            // optionsArray: []
+            // optionsArray: props.optionsArray
+            optionsArray: []
         }
 
         this.handleDeleteOptions = this.handleDeleteOptions.bind(this)
@@ -29,7 +29,7 @@ class IndecisionApp extends React.Component {
         
     }
 
-    componentDidUpdate(prevState){
+    componentDidUpdate(prevProps, prevState){                   // prevProps responsible for inheriting the property
         // Saving Data to local storage
         if(prevState.optionsArray.length !== this.state.optionsArray.length){
             const json = JSON.stringify(this.state.optionsArray);
@@ -98,9 +98,9 @@ class IndecisionApp extends React.Component {
     }
 }
 
-IndecisionApp.defaultProps = {
-    optionsArray: []
-}
+// IndecisionApp.defaultProps = {
+//     optionsArray: []
+// }
 
 // class Header extends React.Component {
 //     render(){

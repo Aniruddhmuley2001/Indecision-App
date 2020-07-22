@@ -19,8 +19,8 @@ var IndecisionApp = function (_React$Component) {
         var _this = _possibleConstructorReturn(this, (IndecisionApp.__proto__ || Object.getPrototypeOf(IndecisionApp)).call(this, props));
 
         _this.state = {
-            optionsArray: props.optionsArray
-            // optionsArray: []
+            // optionsArray: props.optionsArray
+            optionsArray: []
         };
 
         _this.handleDeleteOptions = _this.handleDeleteOptions.bind(_this);
@@ -47,7 +47,8 @@ var IndecisionApp = function (_React$Component) {
         }
     }, {
         key: 'componentDidUpdate',
-        value: function componentDidUpdate(prevState) {
+        value: function componentDidUpdate(prevProps, prevState) {
+            // prevProps responsible for inheriting the property
             // Saving Data to local storage
             if (prevState.optionsArray.length !== this.state.optionsArray.length) {
                 var json = JSON.stringify(this.state.optionsArray);
@@ -127,21 +128,22 @@ var IndecisionApp = function (_React$Component) {
     return IndecisionApp;
 }(React.Component);
 
-IndecisionApp.defaultProps = {
-    optionsArray: []
+// IndecisionApp.defaultProps = {
+//     optionsArray: []
+// }
 
-    // class Header extends React.Component {
-    //     render(){
-    //         return(
-    //             <div>
-    //                 <h1>{this.props.title}</h1>
-    //                 <h2>{this.props.subtitle}</h2>
-    //             </div>
-    //         );
-    //     }
-    // }
+// class Header extends React.Component {
+//     render(){
+//         return(
+//             <div>
+//                 <h1>{this.props.title}</h1>
+//                 <h2>{this.props.subtitle}</h2>
+//             </div>
+//         );
+//     }
+// }
 
-};var Header = function Header(props) {
+var Header = function Header(props) {
     return React.createElement(
         'div',
         null,
