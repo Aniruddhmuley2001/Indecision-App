@@ -70,3 +70,30 @@ import IndecisionApp from './components/IndecisionApp';
 
 // ReactDOM.render(<User name="Aniruddh" age={18} />, document.getElementById('app'));
 ReactDOM.render(<IndecisionApp />, document.getElementById('app'));
+
+
+// Understanding ES6 Class Properties
+// class OldSyntax {
+//     constructor(){
+//         this.name = 'Mike';
+//         this.getGreeting = this.getGreeting.bind(this);
+//     }
+//     getGreeting(){
+//         return `Hi! My name is ${this.name}`
+//     }
+// }
+// const oldSyntax = new OldSyntax;
+// const getGreeting = oldSyntax.getGreeting;
+// console.log(getGreeting());
+
+// //--------------------------------
+
+// class NewSyntax {
+//     name = 'Nick';
+//     getGreeting = () => {
+//         return `Hi! My name is ${this.name}`
+//     }
+// }
+// const newSyntax = new NewSyntax;
+// const newGetGreeting = newSyntax.getGreeting;
+// console.log(newGetGreeting());
