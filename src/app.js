@@ -1,7 +1,8 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import IndecisionApp from './components/IndecisionApp';
-import './styles/styles.css';
+import 'normalize.css/normalize.css'
+import './styles/styles.scss';
 
 ReactDOM.render(<IndecisionApp />, document.getElementById('app'));
 
@@ -73,6 +74,7 @@ ReactDOM.render(<IndecisionApp />, document.getElementById('app'));
 
 // ReactDOM.render(<User name="Aniruddh" age={18} />, document.getElementById('app'));
 
+// -------------------------------------------------------------------------------------
 
 // Understanding ES6 Class Properties
 // class OldSyntax {
