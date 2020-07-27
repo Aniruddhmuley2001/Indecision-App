@@ -1,6 +1,9 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import IndecisionApp from './components/IndecisionApp';
+import './styles/styles.css';
+
+ReactDOM.render(<IndecisionApp />, document.getElementById('app'));
 
 // IndecisionApp.defaultProps = {
 //     optionsArray: []
@@ -69,7 +72,6 @@ import IndecisionApp from './components/IndecisionApp';
 // }
 
 // ReactDOM.render(<User name="Aniruddh" age={18} />, document.getElementById('app'));
-ReactDOM.render(<IndecisionApp />, document.getElementById('app'));
 
 
 // Understanding ES6 Class Properties
