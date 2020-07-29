@@ -1,0 +1,40 @@
+.widget {
+    background: $light-blue;
+    margin-bottom: $xl-size;
+}
+
+.widget-header {
+    background: $blue;
+    color: $off-white;
+    padding: $l-size;
+    display: flex;
+    justify-content: space-between;
+}
+
+.widget-header__title {
+    margin: 0;
+}
+
+.widget__message {
+    color: $off-white;
+    margin: 0;
+    padding: $m-size $m-size 0;
+    font-size: large;
+    font-style: italic;
+}
+
+.widget__add {
+    display: flex;
+    justify-content: space-between;
+    padding: $m-size;
+    color: $off-white;
+    border-bottom: 1px solid lighten($color: $light-blue, $amount: 10%);
+    font-size: larger;
+    margin: 0;
+}
+
+.widget__add--input {
+    flex-grow: 1;
+    margin-right: 1rem;
+    padding: $s-size;
+}
