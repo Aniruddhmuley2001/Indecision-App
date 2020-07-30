@@ -6,13 +6,19 @@
     border-bottom: .6rem solid darken($color: $purple, $amount: 10%);
     font-weight: bold;
     font-size: $l-size;
-    margin-bottom: $xl-size;
+    margin-bottom: $m-size;
     width: 100%;
     padding: 2.4rem;
 }
 
 .big-button:disabled {
     opacity: 0.5;
+}
+
+@media (min-width: 45rem) {
+    .big-button{
+        margin-bottom: $xl-size;
+    }
 }
 
 // Button

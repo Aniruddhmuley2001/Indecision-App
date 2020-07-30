@@ -1,0 +1,35 @@
+.widget__add {
+    display: flex;
+    justify-content: space-between;
+    padding: $m-size;
+    color: $off-white;
+    border-bottom: 1px solid lighten($color: $light-blue, $amount: 10%);
+    font-size: larger;
+    flex-direction: row;
+}
+
+.widget__add--input {
+    flex-grow: 1;
+    padding: $s-size;
+    margin-bottom: $s-size;
+}
+
+.add-option {
+    display: flex;
+    justify-content: space-between;
+    padding: $m-size;
+    color: $off-white;
+    border-bottom: 1px solid lighten($color: $light-blue, $amount: 10%);
+    font-size: larger;
+    flex-direction: column;
+}
+
+@media (min-width: 40rem) {
+    .add-option {
+        flex-direction: row;
+    }
+    .widget__add--input {
+        margin-bottom: auto;
+        margin-right: $s-size;
+    }
+}
